@@ -19,7 +19,11 @@ app.use(bodyparser.json());
 //########################### routers ############################################
 const userRoutes = require('./app/Router/userRouter');
 app.use(userRoutes)
-
+app.use('/', (req, res) => {
+  res.json({
+    result: "working fine",
+  })
+})
 mongoose.connect('mongodb://localhost:27017/newProject', { useUnifiedTopology: true, useNewUrlParser: true }, () => {
   console.log("connected")
   app.listen(3000);
